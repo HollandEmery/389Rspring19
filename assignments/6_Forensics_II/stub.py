@@ -24,13 +24,27 @@ with open(sys.argv[1], 'rb') as fpff:
 # Hint: struct.unpack will be VERY useful.
 # Hint: you might find it easier to use an index/offset variable than
 # hardcoding ranges like 0:8
-magic, version = struct.unpack("<LL", data[0:8])
+i = 0
+mag = []
+ver = []
+ind = 0
+while i < len(data)-8:
+    
+    magic, version = struct.unpack("<LL", data[i:i+8])
+    if magic == MAGIC and version == VERSION:
+        mag[ind] = magic
+        ver[ind] = version
+        ind += 1
+    i += 1
+i = 0
+while i < len(mag)-1:
+    if magic != MAGIC:
+        bork("Bad magic! Got %s, expected %s" % (hex(magic), hex(MAGIC)))
 
-if magic != MAGIC:
-    bork("Bad magic! Got %s, expected %s" % (hex(magic), hex(MAGIC)))
-
-if version != VERSION:
-    bork("Bad version! Got %d, expected %d" % (int(version), int(VERSION)))
+    if version != VERSION:
+        bork("Bad version! Got %d, expected %d" % (int(version), int(VERSION)))
+    print(mag[i]+" "+ver[i])
+    i += 1
 
 print("------- HEADER -------")
 print("MAGIC: %s" % hex(magic))
@@ -40,3 +54,4 @@ print("VERSION: %d" % int(version))
 # the rest of the header and the actual FPFF body. Good luck!
 
 print("-------  BODY  -------")
+
