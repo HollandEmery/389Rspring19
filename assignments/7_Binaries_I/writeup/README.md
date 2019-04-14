@@ -1,12 +1,12 @@
 # Writeup 7 - Binaries I
 
-Name: *PUT YOUR NAME HERE*
-Section: *PUT YOUR SECTION NUMBER HERE*
+Name: Holland Emery
+Section: 0201
 
 I pledge on my honor that I have not given or received any unauthorized
 assistance on this assignment or examination.
 
-Digital acknowledgement: *PUT YOUR NAME HERE*
+Digital acknowledgement: Holland Emery
 
 ## Assignment Writeup
 
@@ -14,9 +14,17 @@ Digital acknowledgement: *PUT YOUR NAME HERE*
 
 *Put your code here as well as in main.c*
 ```c
-printf("your code here");
+int main(int num, int num2) {
+printf(num);
+printf(num2);
+num = num^num2;
+num2 = num^num2;
+num = num^num2;
+printf(num);
+printf(num2);
+}
 ```
 
 ### Part 2 (10 Pts)
 
-*Replace this text with your repsonse to our prompt for part 2!*
+The goal of the code is to switch the values of 2 numbers without using an extra variable, switching 2 values in place.
